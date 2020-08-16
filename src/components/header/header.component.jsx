@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { ReactComponent as Logo } from "../../assets/skate.svg";
 // this is a special syntax in React for importing SVG!!
+// cool!
 import "./header.styles.scss";
 
 const Header = () => {
