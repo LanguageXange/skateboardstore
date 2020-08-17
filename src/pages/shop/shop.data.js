@@ -6,15 +6,17 @@ const SHOP_DATA = [
     items: [
       {
         id: 1,
-        name: "Brown Brim",
-        imageUrl: "https://i.ibb.co/ZYW3VTp/brown-brim.png",
-        price: 25,
+        name: "Rally Cat",
+        imageUrl:
+          "https://landyachtz.com/ca/wp-content/uploads/sites/3/2020/04/Landyachtz-Rally-Cat-Skateboards-longboard-Skateboard-Face-Cover.jpg",
+        price: 240,
       },
       {
         id: 2,
-        name: "Blue Beanie",
-        imageUrl: "https://i.ibb.co/ypkgK0X/blue-beanie.png",
-        price: 18,
+        name: "Classic White",
+        imageUrl:
+          "https://landyachtz.com/ca/wp-content/uploads/sites/3/2020/06/120CP-UBATVCLAW-ATV_Classic_Acid_Wash_Complete-Boards-Cover-Web.jpg",
+        price: 185,
       },
       {
         id: 3,
