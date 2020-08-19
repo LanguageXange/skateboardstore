@@ -3,7 +3,10 @@ import React, { Component } from "react";
 import "./sign-in.styles.scss";
 
 import FormInput from "../form-input/form-input.component";
-// FormInput become a reusable component for signin sign up register...
+// FormInput and CustomButton become a reusable component for signin sign up register...
+import CustomButton from "../custom-button/custom-button.component";
+// sign in with Google
+import { signInWithGoogle } from "../../firebase/firebase.utils";
 
 class SignIn extends Component {
   constructor(props) {
@@ -30,7 +33,7 @@ class SignIn extends Component {
   render() {
     return (
       <div className="sign-in">
-        <h2>I already have an account</h2>
+        <h2 className="title">I already have an account</h2>
         <span> Sign in with your email and password</span>
         <form onSubmit={this.handleSubmit}>
           <FormInput
@@ -51,11 +54,14 @@ class SignIn extends Component {
             required
           />
 
-          <input type="submit" value="Submit the Form" />
+          <CustomButton type="submit"> Sign In </CustomButton>
+          <CustomButton onClick={signInWithGoogle} isGoogle>
+            Sign In with Google
+          </CustomButton>
         </form>
       </div>
     );
   }
 }
-
+// if you don't pass in a value for isGoogle, it will set as true
 export default SignIn;
