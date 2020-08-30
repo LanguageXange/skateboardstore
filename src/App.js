@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { setCurrentUser } from "./redux/user/user.action";
 // adding action creator function , which simply returns the action object
@@ -56,17 +56,33 @@ class App extends React.Component {
           <Route exact path="/" component={Homepage} />
           <Route exact path="/shop" component={ShopPage} />
           <Route exact path="/skateboard" component={Skateboard} />
-          <Route exact path="/signin" component={SignInAndSignUpPage} />
+          <Route
+            exact
+            path="/signin"
+            render={() =>
+              this.props.currentUser ? (
+                <Redirect to="/" />
+              ) : (
+                <SignInAndSignUpPage />
+              )
+            }
+          />
         </Switch>
       </>
     );
   }
 }
 
+const mapStateToProps = ({ user }) => ({
+  currentUser: user.currentUser,
+});
+
 const mapDispatchToProps = (dispatch) => ({
   setCurrentUser: (user) => dispatch(setCurrentUser(user)),
 });
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
 // only the HomePage, ShopPage component has access to that specific Route props
 // place the Header Component outside of the Switch! so it will appear across the pages!
+// redirect users once they sign in, so we need the state, & redirect fromo react-router-dom
+// change to route from component to render
