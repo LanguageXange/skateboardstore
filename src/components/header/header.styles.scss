@@ -24,7 +24,13 @@
     .option {
       padding: 10px 15px;
       font-size: 28px;
+      margin: 15px;
+      border-bottom: 2px solid black;
       cursor: pointer;
+    }
+
+    .option:hover {
+      border-bottom: 3px solid orange;
     }
   }
 }

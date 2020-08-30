@@ -6,7 +6,7 @@ import FormInput from "../form-input/form-input.component";
 // FormInput and CustomButton become a reusable component for signin sign up register...
 import CustomButton from "../custom-button/custom-button.component";
 // sign in with Google
-import { signInWithGoogle } from "../../firebase/firebase.utils";
+import { auth, signInWithGoogle } from "../../firebase/firebase.utils";
 
 class SignIn extends Component {
   constructor(props) {
@@ -17,10 +17,18 @@ class SignIn extends Component {
       password: "",
     };
   }
-
-  handleSubmit = (e) => {
+  // turn handleSubmit into async await
+  handleSubmit = async (e) => {
     e.preventDefault();
-    this.setState({ email: "", password: "" });
+
+    const { email, password } = this.state;
+    try {
+      await auth.signInWithEmailAndPassword(email, password);
+      // if sign in succeeds we will reset email / pass to empty string
+      this.setState({ email: "", password: "" });
+    } catch (err) {
+      console.log(err.message);
+    }
   };
 
   // destructuring

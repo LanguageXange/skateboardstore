@@ -6,59 +6,38 @@ const SHOP_DATA = [
     items: [
       {
         id: 1,
-        name: "Rally Cat",
+        name: "Loco Mariachi",
         imageUrl:
-          "https://landyachtz.com/ca/wp-content/uploads/sites/3/2020/04/Landyachtz-Rally-Cat-Skateboards-longboard-Skateboard-Face-Cover.jpg",
-        price: 240,
+          "https://landyachtz.com/ca/wp-content/uploads/sites/3/2020/06/113CP-UBLOC35MC-Loco_35_Mariachi_Complete-Boards-Cover-Web.jpg",
+        price: 140,
       },
       {
         id: 2,
-        name: "Classic White",
+        name: "Wrestler-1",
         imageUrl:
-          "https://landyachtz.com/ca/wp-content/uploads/sites/3/2020/06/120CP-UBATVCLAW-ATV_Classic_Acid_Wash_Complete-Boards-Cover-Web.jpg",
-        price: 185,
+          "https://landyachtz.com/ca/wp-content/uploads/sites/3/2020/06/116CP-UBLOC35WR-Loco_35_Wrestler_Complete-Boards-Cover-Web.jpg",
+        price: 160,
       },
       {
         id: 3,
-        name: "Brown Cowboy",
-        imageUrl: "https://i.ibb.co/QdJwgmp/brown-cowboy.png",
-        price: 35,
+        name: "Coco Standoff",
+        imageUrl:
+          "https://landyachtz.com/ca/wp-content/uploads/sites/3/2020/05/115CP-UBLOC33MS-Loco_33_Mexican_Standoff_Complete-Boards-Cover-Web.jpg",
+        price: 160,
       },
       {
         id: 4,
-        name: "Grey Brim",
-        imageUrl: "https://i.ibb.co/RjBLWxB/grey-brim.png",
-        price: 25,
+        name: "Wrestler-2",
+        imageUrl:
+          "https://landyachtz.com/ca/wp-content/uploads/sites/3/2020/06/116CP-UBLOC33WR-Loco_33_Wrestler_Complete-Boards-Cover-Web.jpg",
+        price: 160,
       },
       {
         id: 5,
-        name: "Green Beanie",
-        imageUrl: "https://i.ibb.co/YTjW3vF/green-beanie.png",
-        price: 18,
-      },
-      {
-        id: 6,
-        name: "Palm Tree Cap",
-        imageUrl: "https://i.ibb.co/rKBDvJX/palm-tree-cap.png",
-        price: 14,
-      },
-      {
-        id: 7,
-        name: "Red Beanie",
-        imageUrl: "https://i.ibb.co/bLB646Z/red-beanie.png",
-        price: 18,
-      },
-      {
-        id: 8,
-        name: "Wolf Cap",
-        imageUrl: "https://i.ibb.co/1f2nWMM/wolf-cap.png",
-        price: 14,
-      },
-      {
-        id: 9,
-        name: "Blue Snapback",
-        imageUrl: "https://i.ibb.co/X2VJP2W/blue-snapback.png",
-        price: 16,
+        name: "Bandito",
+        imageUrl:
+          "https://landyachtz.com/ca/wp-content/uploads/sites/3/2020/05/114CP-UBLOC33BD-Loco_33_Bandito_Complete-Boards-Cover-Web.jpg",
+        price: 160,
       },
     ],
   },
@@ -102,24 +81,6 @@ const SHOP_DATA = [
           "https://landyachtz.com/ca/wp-content/uploads/sites/3/2020/07/119CP-FRMUFGRG-Fibreglass_Mummy_Red_Green_Complete-Boards-Cover-Web.jpg",
         price: 260,
       },
-      {
-        id: 6,
-        name: "Nike Brown High Tops",
-        imageUrl: "https://i.ibb.co/fMTV342/nike-brown.png",
-        price: 160,
-      },
-      {
-        id: 7,
-        name: "Air Jordan Limited",
-        imageUrl: "https://i.ibb.co/w4k6Ws9/nike-funky.png",
-        price: 190,
-      },
-      {
-        id: 8,
-        name: "Timberlands",
-        imageUrl: "https://i.ibb.co/Mhh6wBg/timberlands.png",
-        price: 200,
-      },
     ],
   },
   {
@@ -129,33 +90,38 @@ const SHOP_DATA = [
     items: [
       {
         id: 1,
-        name: "Black Jean Shearling",
-        imageUrl: "https://i.ibb.co/XzcwL5s/black-shearling.png",
-        price: 125,
+        name: "Dinghy Summit",
+        imageUrl:
+          "https://landyachtz.com/ca/wp-content/uploads/sites/3/2019/09/Landyachtz-Dinghy-Summit-Mini-Cruiser-longboard-Skateboard-Face-Cover.jpg",
+        price: 165,
       },
       {
         id: 2,
-        name: "Blue Jean Jacket",
-        imageUrl: "https://i.ibb.co/mJS6vz0/blue-jean-jacket.png",
-        price: 90,
+        name: "Dinghy Dragon",
+        imageUrl:
+          "https://landyachtz.com/ca/wp-content/uploads/sites/3/2019/07/Landyachtz-Dinghy-Dragon-Mini-Cruiser-longboard-Skateboard-Face-Cover.jpg",
+        price: 165,
       },
       {
         id: 3,
-        name: "Grey Jean Jacket",
-        imageUrl: "https://i.ibb.co/N71k1ML/grey-jean-jacket.png",
-        price: 90,
+        name: "Dinghy Adventure",
+        imageUrl:
+          "https://landyachtz.com/ca/wp-content/uploads/sites/3/2020/02/2019-Dinghy-Adventure-Skeleton-Cover-WEB.jpg",
+        price: 165,
       },
       {
         id: 4,
-        name: "Brown Shearling",
-        imageUrl: "https://i.ibb.co/s96FpdP/brown-shearling.png",
+        name: "Dinghy Tigor",
+        imageUrl:
+          "https://landyachtz.com/ca/wp-content/uploads/sites/3/2020/06/120CP-UBDYTG-Dinghy_Tigor_Complete-Boards-Cover-Web.jpg",
         price: 165,
       },
       {
         id: 5,
-        name: "Tan Trench",
-        imageUrl: "https://i.ibb.co/M6hHc3F/brown-trench.png",
-        price: 185,
+        name: "Dinghy Nature",
+        imageUrl:
+          "https://landyachtz.com/ca/wp-content/uploads/sites/3/2020/02/Natural-w-Black-Wheels-Cover-WEB.jpg",
+        price: 125,
       },
     ],
   },
@@ -166,45 +132,38 @@ const SHOP_DATA = [
     items: [
       {
         id: 1,
-        name: "Blue Tanktop",
-        imageUrl: "https://i.ibb.co/7CQVJNm/blue-tank.png",
-        price: 25,
+        name: "Crown Peak",
+        imageUrl:
+          "https://landyachtz.com/ca/wp-content/uploads/sites/3/2020/02/120CP-DHSB38CWPK-Switchblade_38_Crown_Peak_Complete-Downhill-Freeride-Boards-Cover-Web.jpg",
+        price: 300,
       },
       {
         id: 2,
-        name: "Floral Blouse",
-        imageUrl: "https://i.ibb.co/4W2DGKm/floral-blouse.png",
-        price: 20,
+        name: "Faded",
+        imageUrl:
+          "https://landyachtz.com/ca/wp-content/uploads/sites/3/2019/10/Switchblade-38-Faded-Graphic-Cover.jpg",
+        price: 300,
       },
       {
         id: 3,
-        name: "Floral Dress",
-        imageUrl: "https://i.ibb.co/KV18Ysr/floral-skirt.png",
-        price: 80,
+        name: "Tropic",
+        imageUrl:
+          "https://landyachtz.com/ca/wp-content/uploads/sites/3/2020/05/Switchblade-38-Tropical-Cover-WEB.jpg",
+        price: 300,
       },
       {
         id: 4,
-        name: "Red Dots Dress",
-        imageUrl: "https://i.ibb.co/N3BN1bh/red-polka-dot-dress.png",
-        price: 80,
+        name: "Lizard",
+        imageUrl:
+          "https://landyachtz.com/ca/wp-content/uploads/sites/3/2020/05/116CP-HTSB36LIZ-Hollowtech_Switchblade_36_Lizard_Complete-Boards-Cover-Web.jpg",
+        price: 300,
       },
       {
         id: 5,
-        name: "Striped Sweater",
-        imageUrl: "https://i.ibb.co/KmSkMbH/striped-sweater.png",
-        price: 45,
-      },
-      {
-        id: 6,
-        name: "Yellow Track Suit",
-        imageUrl: "https://i.ibb.co/v1cvwNf/yellow-track-suit.png",
-        price: 135,
-      },
-      {
-        id: 7,
-        name: "White Blouse",
-        imageUrl: "https://i.ibb.co/qBcrsJg/white-vest.png",
-        price: 20,
+        name: "Spectrum",
+        imageUrl:
+          "https://landyachtz.com/ca/wp-content/uploads/sites/3/2020/06/120CP-DHEVO40SP-Evo_40_Spectrum_Complete-Downhill-Freeride-Boards-Cover-Web.jpg",
+        price: 300,
       },
     ],
   },

@@ -13,6 +13,39 @@ const config = {
   measurementId: "G-C9Y3D7ZSCR",
 };
 
+// async await
+// QueryReference: CRUD method, doesn't have the actual data, just referencing the place it hold the data
+// QuerySnapshot: represents actual data
+
+//-------------------------------//
+// firebase now has realtime database & firestore, what's the differences?
+
+export const createUserProfile = async (userAuth, otherData) => {
+  if (!userAuth) return;
+
+  const userRef = firestore.doc(`/users/${userAuth.uid}`);
+  const snapShot = await userRef.get();
+  // property: exists: boolean, id, metadata, ref,...etc
+  // if snapShot.exist is not true, then creat a user profile
+  if (!snapShot.exists) {
+    const { displayName, email } = userAuth;
+    const createdAt = new Date();
+
+    try {
+      await userRef.set({
+        displayName,
+        email,
+        createdAt,
+        ...otherData,
+      });
+    } catch (err) {
+      console.log("error", err.message);
+    }
+
+    return userRef;
+  }
+};
+
 firebase.initializeApp(config);
 
 export const auth = firebase.auth();
