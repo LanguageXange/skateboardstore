@@ -1,9 +1,12 @@
 import React from "react";
 import "./custom-button.styles.scss";
 
-const CustomButton = ({ children, isGoogle, ...otherProps }) => (
+// adding inverted prop for the cart drop down menu 'ready to checkout' button
+const CustomButton = ({ children, isGoogle, inverted, ...otherProps }) => (
   <button
-    className={`${isGoogle ? "google-signin" : ""} custom-button`}
+    className={`${inverted ? "inverted" : ""} ${
+      isGoogle ? "google-signin" : ""
+    } custom-button`}
     {...otherProps}
   >
     {children}
