@@ -1,4 +1,6 @@
 import { CartActionTypes } from "./cart.type";
+import { addItemToCart } from "./cart.utils";
+
 const INITIAL_STATE = {
   hidden: true,
   cartItems: [],
@@ -14,7 +16,7 @@ const CartReducer = (state = INITIAL_STATE, action) => {
     case CartActionTypes.ADD_ITEM:
       return {
         ...state,
-        cartItems: [...state.cartItems, action.payload],
+        cartItems: addItemToCart(state.cartItems, action.payload),
       };
     default:
       return state;
@@ -22,3 +24,8 @@ const CartReducer = (state = INITIAL_STATE, action) => {
 };
 
 export default CartReducer;
+
+// create a function in cart.utils.js to organize the function
+// make codes readable
+// then update cartItems in case ADD_ITEM
+// need to update the ID attribute in the shop.data.js

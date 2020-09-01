@@ -47,35 +47,35 @@ const SHOP_DATA = [
     routeName: "longboard",
     items: [
       {
-        id: 1,
+        id: 6,
         name: "Landyachtz TopSpeed",
         imageUrl:
           "https://landyachtz.com/ca/wp-content/uploads/sites/3/2020/06/113CP-DHTS34MTN-Top_Speed_34_Mountain_Complete-Boards-Cover-Web.jpg",
         price: 250,
       },
       {
-        id: 2,
+        id: 7,
         name: "Landyachtz Owl",
         imageUrl:
           "https://landyachtz.com/ca/wp-content/uploads/sites/3/2020/08/WEB-Tomahawk-Owl-Cover.jpg",
         price: 140,
       },
       {
-        id: 3,
+        id: 8,
         name: "Landyachtz Tropic",
         imageUrl:
           "https://landyachtz.com/ca/wp-content/uploads/sites/3/2020/05/Switchblade-38-Tropical-Cover-WEB.jpg",
         price: 300,
       },
       {
-        id: 4,
+        id: 9,
         name: "Landyachtz Gradient",
         imageUrl:
           "https://landyachtz.com/ca/wp-content/uploads/sites/3/2020/08/119CP-FRMUFGGR-Fibreglass_Mummy_Gradient_Complete-Boards-Cover-Web.jpg",
         price: 260,
       },
       {
-        id: 5,
+        id: 10,
         name: "Landyachtz Fibre",
         imageUrl:
           "https://landyachtz.com/ca/wp-content/uploads/sites/3/2020/07/119CP-FRMUFGRG-Fibreglass_Mummy_Red_Green_Complete-Boards-Cover-Web.jpg",
@@ -89,35 +89,35 @@ const SHOP_DATA = [
     routeName: "cruiser",
     items: [
       {
-        id: 1,
+        id: 11,
         name: "Dinghy Summit",
         imageUrl:
           "https://landyachtz.com/ca/wp-content/uploads/sites/3/2019/09/Landyachtz-Dinghy-Summit-Mini-Cruiser-longboard-Skateboard-Face-Cover.jpg",
         price: 165,
       },
       {
-        id: 2,
+        id: 12,
         name: "Dinghy Dragon",
         imageUrl:
           "https://landyachtz.com/ca/wp-content/uploads/sites/3/2019/07/Landyachtz-Dinghy-Dragon-Mini-Cruiser-longboard-Skateboard-Face-Cover.jpg",
         price: 165,
       },
       {
-        id: 3,
+        id: 13,
         name: "Dinghy Adventure",
         imageUrl:
           "https://landyachtz.com/ca/wp-content/uploads/sites/3/2020/02/2019-Dinghy-Adventure-Skeleton-Cover-WEB.jpg",
         price: 165,
       },
       {
-        id: 4,
+        id: 14,
         name: "Dinghy Tigor",
         imageUrl:
           "https://landyachtz.com/ca/wp-content/uploads/sites/3/2020/06/120CP-UBDYTG-Dinghy_Tigor_Complete-Boards-Cover-Web.jpg",
         price: 165,
       },
       {
-        id: 5,
+        id: 15,
         name: "Dinghy Nature",
         imageUrl:
           "https://landyachtz.com/ca/wp-content/uploads/sites/3/2020/02/Natural-w-Black-Wheels-Cover-WEB.jpg",
@@ -131,35 +131,35 @@ const SHOP_DATA = [
     routeName: "downhill",
     items: [
       {
-        id: 1,
+        id: 16,
         name: "Crown Peak",
         imageUrl:
           "https://landyachtz.com/ca/wp-content/uploads/sites/3/2020/02/120CP-DHSB38CWPK-Switchblade_38_Crown_Peak_Complete-Downhill-Freeride-Boards-Cover-Web.jpg",
         price: 300,
       },
       {
-        id: 2,
+        id: 17,
         name: "Faded",
         imageUrl:
           "https://landyachtz.com/ca/wp-content/uploads/sites/3/2019/10/Switchblade-38-Faded-Graphic-Cover.jpg",
         price: 300,
       },
       {
-        id: 3,
+        id: 18,
         name: "Tropic",
         imageUrl:
           "https://landyachtz.com/ca/wp-content/uploads/sites/3/2020/05/Switchblade-38-Tropical-Cover-WEB.jpg",
         price: 300,
       },
       {
-        id: 4,
+        id: 19,
         name: "Lizard",
         imageUrl:
           "https://landyachtz.com/ca/wp-content/uploads/sites/3/2020/05/116CP-HTSB36LIZ-Hollowtech_Switchblade_36_Lizard_Complete-Boards-Cover-Web.jpg",
         price: 300,
       },
       {
-        id: 5,
+        id: 20,
         name: "Spectrum",
         imageUrl:
           "https://landyachtz.com/ca/wp-content/uploads/sites/3/2020/06/120CP-DHEVO40SP-Evo_40_Spectrum_Complete-Downhill-Freeride-Boards-Cover-Web.jpg",
@@ -173,43 +173,43 @@ const SHOP_DATA = [
     routeName: "outfit",
     items: [
       {
-        id: 1,
+        id: 21,
         name: "Black Jean Shearling",
         imageUrl: "https://i.ibb.co/XzcwL5s/black-shearling.png",
         price: 125,
       },
       {
-        id: 2,
+        id: 22,
         name: "Brown Shearling",
         imageUrl: "https://i.ibb.co/s96FpdP/brown-shearling.png",
         price: 165,
       },
       {
-        id: 3,
+        id: 23,
         name: "Blue Jean Jacket",
         imageUrl: "https://i.ibb.co/mJS6vz0/blue-jean-jacket.png",
         price: 90,
       },
       {
-        id: 4,
+        id: 24,
         name: "Grey Jean Jacket",
         imageUrl: "https://i.ibb.co/N71k1ML/grey-jean-jacket.png",
         price: 90,
       },
       {
-        id: 5,
+        id: 25,
         name: "Black Converse",
         imageUrl: "https://i.ibb.co/bPmVXyP/black-converse.png",
         price: 110,
       },
       {
-        id: 6,
+        id: 26,
         name: "Palm Tree Cap",
         imageUrl: "https://i.ibb.co/rKBDvJX/palm-tree-cap.png",
         price: 14,
       },
       {
-        id: 7,
+        id: 27,
         name: "Wolf Cap",
         imageUrl: "https://i.ibb.co/1f2nWMM/wolf-cap.png",
         price: 14,
