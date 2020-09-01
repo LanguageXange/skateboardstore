@@ -9,9 +9,9 @@ const Collection = ({ title, items }) => (
     <h1 className="title"> {title.toUpperCase()}</h1>
     <div className="preview">
       {items
-        .filter((item, i) => i < 4) // only wants the first 5 items
-        .map(({ id, ...itemArrayProps }) => (
-          <CollectionItem key={id} {...itemArrayProps} />
+        .filter((item, i) => i < 4) // only wants the first 4 items
+        .map((item) => (
+          <CollectionItem key={item.id} item={item} />
         ))}
     </div>
   </div>
@@ -21,3 +21,5 @@ export default Collection;
 
 // Performance concern here if the array is really large items.filter.map function calls whenever Colleciton component renders
 // Notice here we use another destructuring and spreading the props
+
+// in Cart Item Reducer lesson, refactor the code to pass in entire item to CollectionItem component
