@@ -1,17 +1,14 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
+import "./App.css";
 import { setCurrentUser } from "./redux/user/user.action";
 // adding action creator function , which simply returns the action object
 import Homepage from "./pages/homepage/homepage.component";
-import "./App.css";
 import ShopPage from "./pages/shop/shop.component";
 import Header from "./components/header/header.component";
 import SignInAndSignUpPage from "./pages/sign-in-up/sign-in-up.component";
 import { auth, createUserProfile } from "./firebase/firebase.utils";
-
-// dummy page for route practice
-const Skateboard = () => <div>Skateboard...</div>;
 
 // add connect & dispatch in app.js so we can remove constructor super and this.state
 class App extends React.Component {
@@ -32,15 +29,11 @@ class App extends React.Component {
             id: snapShot.id,
             ...snapShot.data(),
           });
-
-          console.log(this.state);
         });
       } else {
         // if user signs out userAuth will be null
         setCurrentUser(userAuth);
       }
-
-      //console.log(userAuth);
     });
   }
 
@@ -55,7 +48,6 @@ class App extends React.Component {
         <Switch>
           <Route exact path="/" component={Homepage} />
           <Route exact path="/shop" component={ShopPage} />
-          <Route exact path="/skateboard" component={Skateboard} />
           <Route
             exact
             path="/signin"

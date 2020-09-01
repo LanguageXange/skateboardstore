@@ -19,42 +19,38 @@ const config = {
 
 //-------------------------------//
 // firebase now has realtime database & firestore, what's the differences?
+firebase.initializeApp(config);
 
-export const createUserProfile = async (userAuth, otherData) => {
+export const createUserProfile = async (userAuth, additionalData) => {
   if (!userAuth) return;
 
-  const userRef = firestore.doc(`/users/${userAuth.uid}`);
+  const userRef = firestore.doc(`users/${userAuth.uid}`);
+
   const snapShot = await userRef.get();
-  // property: exists: boolean, id, metadata, ref,...etc
-  // if snapShot.exist is not true, then creat a user profile
+
   if (!snapShot.exists) {
     const { displayName, email } = userAuth;
     const createdAt = new Date();
-
     try {
       await userRef.set({
         displayName,
         email,
         createdAt,
-        ...otherData,
+        ...additionalData,
       });
-    } catch (err) {
-      console.log("error", err.message);
+    } catch (error) {
+      console.log("error creating user", error.message);
     }
-
-    return userRef;
   }
-};
 
-firebase.initializeApp(config);
+  return userRef;
+};
 
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
 
 const provider = new firebase.auth.GoogleAuthProvider();
-
 provider.setCustomParameters({ prompt: "select_account" });
-
-// create a function called signInWithGoogle
 export const signInWithGoogle = () => auth.signInWithPopup(provider);
+
 export default firebase;
