@@ -13,7 +13,7 @@ const SHOP_DATA = [
       },
       {
         id: 2,
-        name: "Wrestler-1",
+        name: "WrestlerF",
         imageUrl:
           "https://landyachtz.com/ca/wp-content/uploads/sites/3/2020/06/116CP-UBLOC35WR-Loco_35_Wrestler_Complete-Boards-Cover-Web.jpg",
         price: 160,
@@ -27,7 +27,7 @@ const SHOP_DATA = [
       },
       {
         id: 4,
-        name: "Wrestler-2",
+        name: "WrestlerS",
         imageUrl:
           "https://landyachtz.com/ca/wp-content/uploads/sites/3/2020/06/116CP-UBLOC33WR-Loco_33_Wrestler_Complete-Boards-Cover-Web.jpg",
         price: 160,
