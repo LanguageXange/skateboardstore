@@ -2,6 +2,7 @@ import React from "react";
 import "./cart-dropdown.styles.scss";
 import CartItem from "../cart-items/cart-items.component";
 import { CartItemSelector } from "../../redux/cart/cart.selectors";
+import { createStructuredSelector } from "reselect";
 import { connect } from "react-redux";
 // here we also want to use connect so that CartItem component have access to cartItems array in the redux store
 
@@ -18,8 +19,8 @@ const Cart = ({ cartItems }) => (
   </div>
 );
 
-const mapStateToProps = (state) => ({
-  cartItems: CartItemSelector(state),
+const mapStateToProps = createStructuredSelector({
+  cartItems: CartItemSelector,
 });
 
 export default connect(mapStateToProps)(Cart);

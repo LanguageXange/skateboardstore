@@ -4,7 +4,11 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { ReactComponent as MyLogo } from "../../assets/skate.svg";
 // this is a special syntax in React for importing SVG!!
-// cool!
+
+// redux selector
+import { createStructuredSelector } from "reselect";
+import { CurrentUserSelector } from "../../redux/user/user.selector";
+import { CartItemHiddenSelector } from "../../redux/cart/cart.selectors";
 import CartItem from "../cart-icon/cart-icon.component";
 import Cart from "../cart-dropdown/cart-dropdown.component";
 import "./header.styles.scss";
@@ -48,9 +52,15 @@ const Header = ({ currentUser, hidden }) => {
 //   hidden: state.cart.hidden,
 // });
 
-const mapUserStateToProps = ({ user: { currentUser }, cart: { hidden } }) => ({
-  currentUser,
-  hidden,
+// const mapUserStateToProps = (state) => ({
+//   currentUser: CurrentUserSelector(state),
+//   hidden: CartItemHiddenSelector(state),
+// });
+
+// use createStructuredSelector as we have more and more selectors
+const mapUserStateToProps = createStructuredSelector({
+  currentUser: CurrentUserSelector,
+  hidden: CartItemHiddenSelector,
 });
 
 export default connect(mapUserStateToProps)(Header);

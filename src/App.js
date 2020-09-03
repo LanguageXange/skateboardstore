@@ -10,6 +10,9 @@ import Header from "./components/header/header.component";
 import SignInAndSignUpPage from "./pages/sign-in-up/sign-in-up.component";
 import { auth, createUserProfile } from "./firebase/firebase.utils";
 
+import { createStructuredSelector } from "reselect";
+import { CurrentUserSelector } from "./redux/user/user.selector";
+
 // add connect & dispatch in app.js so we can remove constructor super and this.state
 class App extends React.Component {
   unsubscribeFromAuth = null;
@@ -65,8 +68,8 @@ class App extends React.Component {
   }
 }
 
-const mapStateToProps = ({ user }) => ({
-  currentUser: user.currentUser,
+const mapStateToProps = createStructuredSelector({
+  currentUser: CurrentUserSelector,
 });
 
 const mapDispatchToProps = (dispatch) => ({
