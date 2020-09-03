@@ -1,6 +1,7 @@
 import React from "react";
 import "./cart-dropdown.styles.scss";
 import CartItem from "../cart-items/cart-items.component";
+import { CartItemSelector } from "../../redux/cart/cart.selectors";
 import { connect } from "react-redux";
 // here we also want to use connect so that CartItem component have access to cartItems array in the redux store
 
@@ -17,8 +18,8 @@ const Cart = ({ cartItems }) => (
   </div>
 );
 
-const mapStateToProps = ({ cart: { cartItems } }) => ({
-  cartItems,
+const mapStateToProps = (state) => ({
+  cartItems: CartItemSelector(state),
 });
 
 export default connect(mapStateToProps)(Cart);
