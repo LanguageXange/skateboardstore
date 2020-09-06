@@ -21,4 +21,4 @@ const MenuItem = ({ title, imageUrl, size, history, linkUrl, match }) => (
 export default withRouter(MenuItem);
 // now the MenuItem has access to history,location,match props provided by the Route
 // match.url essentially means whatever is matching the url  in case we change the url
-// when clicking image directing users to the linkUrl which is defined in directory.component.jsx
+// when clicking image directing users to the linkUrl which is defined in directory.reducer
