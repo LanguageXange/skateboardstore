@@ -1,8 +1,8 @@
 const SHOP_DATA = {
-  skateboard: {
+  skateboards: {
     id: 1,
-    title: "skateboard",
-    routeName: "skateboard",
+    title: "Skateboards",
+    routeName: "skateboards",
     items: [
       {
         id: 1,
@@ -41,10 +41,10 @@ const SHOP_DATA = {
       },
     ],
   },
-  longboard: {
+  longboards: {
     id: 2,
-    title: "longboard",
-    routeName: "longboard",
+    title: "Longboards",
+    routeName: "longboards",
     items: [
       {
         id: 6,
@@ -83,9 +83,9 @@ const SHOP_DATA = {
       },
     ],
   },
-  cruiser: {
+  cruisers: {
     id: 3,
-    title: "cruiser",
+    title: "Cruisers",
     routeName: "cruiser",
     items: [
       {
@@ -127,7 +127,7 @@ const SHOP_DATA = {
   },
   downhill: {
     id: 4,
-    title: "downhill",
+    title: "Downhill",
     routeName: "downhill",
     items: [
       {
@@ -169,7 +169,7 @@ const SHOP_DATA = {
   },
   outfit: {
     id: 5,
-    title: "outfit",
+    title: "Outfit",
     routeName: "outfit",
     items: [
       {

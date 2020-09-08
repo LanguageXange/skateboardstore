@@ -1,17 +1,17 @@
 import React from "react";
-// FIX THIS FILE - SOMETHING IS WRONG maybe mapStateToProps is not working properly!!!
+import { connect } from "react-redux";
+import CollectionItem from "../../components/collection-item/collection-item.component";
+
 // https://learn.co/lessons/react-router-params
 import "./category.styles.scss";
-import CollectionItem from "../../components/collection-item/collection-item.component";
-import { cateCollectionSelector } from "../../redux/shop/shop.selectors.js";
-import { connect } from "react-redux";
-const CategoryPage = ({ cateCollection }) => {
-  console.log("cateCollection is undefined");
 
-  const { title, items } = cateCollection;
+import { CollectionSelector } from "../../redux/shop/shop.selectors";
+
+const CategoryPage = ({ collection }) => {
+  const { title, items } = collection;
   return (
     <div className="category-page">
-      <h2 className="title"> {title}</h2>
+      <h2 className="title">{title}</h2>
       <div className="items">
         {items.map((item) => (
           <CollectionItem key={item.id} item={item} />
@@ -22,9 +22,7 @@ const CategoryPage = ({ cateCollection }) => {
 };
 
 const mapStateToProps = (state, ownProps) => ({
-  cateCollection: cateCollectionSelector(ownProps.match.params.categoryId)(
-    state
-  ),
+  collection: CollectionSelector(ownProps.match.params.categoryId)(state),
 });
 
 //state is the reducer state

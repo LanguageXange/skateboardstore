@@ -4,10 +4,10 @@ import CategoryPage from "../category/category.component";
 import CollectionOverview from "../../components/collections-overview/collections-overview.component";
 
 const ShopPage = ({ match }) => {
-  console.log(match, "in shop component");
+  console.log(match.path, "in shop component THIS IS WORKING");
   return (
     <div className="shop-page">
-      <Route exact path={`${match.path}`} component={CollectionOverview} />
+      <Route exact path={match.path} component={CollectionOverview} />
       <Route path={`${match.path}/:categoryId`} component={CategoryPage} />
     </div>
   );
@@ -15,7 +15,7 @@ const ShopPage = ({ match }) => {
 
 export default ShopPage;
 
-// DEBUG: WHEN I TYPE /shop/skateboard in the console.log it doesn't show up!!??
+// TODO: DEBUG- WHEN I TYPE /shop/skateboard in the console.log it doesn't show up!!??
 
 // move the state to redux
 // switch to functional component

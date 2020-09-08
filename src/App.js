@@ -8,7 +8,6 @@ import Homepage from "./pages/homepage/homepage.component";
 import ShopPage from "./pages/shop/shop.component";
 import CheckoutPage from "./pages/checkout/checkout.component";
 import SignInAndSignUpPage from "./pages/sign-in-up/sign-in-up.component";
-import CategoryPage from "./pages/category/category.component";
 import Header from "./components/header/header.component";
 import { auth, createUserProfile } from "./firebase/firebase.utils";
 
@@ -52,9 +51,9 @@ class App extends React.Component {
         <Header />
         <Switch>
           <Route exact path="/" component={Homepage} />
-          <Route exact path="/shop" component={ShopPage} />
+          <Route path="/shop" component={ShopPage} />
           <Route exact path="/checkout" component={CheckoutPage} />
-          <Route exact path="/test" component={CategoryPage} />
+
           <Route
             exact
             path="/signin"
@@ -85,3 +84,5 @@ export default connect(mapStateToProps, mapDispatchToProps)(App);
 // place the Header Component outside of the Switch! so it will appear across the pages!
 // redirect users once they sign in, so we need the state, & redirect fromo react-router-dom
 // change to route from component to render
+
+// DEBUG SUCCESS: remove exact for the shopPage otherwise /shop/:categoryId will NEVER BE RENDERED

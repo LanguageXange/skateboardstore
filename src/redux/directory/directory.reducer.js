@@ -1,24 +1,24 @@
 const INITIAL_STATE = {
   sections: [
     {
-      title: "skateboard",
+      title: "skateboards",
       imageUrl: "https://i.ibb.co/jkvFJxX/skateboard.jpg",
       id: 1,
-      linkUrl: "shop/skateboard",
+      linkUrl: "shop/skateboards",
     },
     {
       title: "longboards",
       imageUrl:
         "https://landyachtz.com/ca/wp-content/uploads/sites/3/2020/03/skateboard_longboard_top_image-1.jpg",
       id: 2,
-      linkUrl: "shop/longboard",
+      linkUrl: "shop/longboards",
     },
     {
       title: "cruisers",
       imageUrl:
         "https://landyachtz.com/ca/wp-content/uploads/sites/3/2020/04/cruiser_cateogory_img-1.jpg",
       id: 3,
-      linkUrl: "shop/cruiser",
+      linkUrl: "shop/cruisers",
     },
     {
       title: "downhill",

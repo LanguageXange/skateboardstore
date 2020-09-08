@@ -20,11 +20,10 @@ export const shopCollectionSelector = createSelector(
 // since we've modified the shop.data.js to an object instead of an array
 // we need a new selector called CollectionPreviewSelector
 
-const CollectionPreviewSelector = createSelector(
+export const CollectionPreviewSelector = createSelector(
   [shopCollectionSelector],
   (collections) => Object.keys(collections).map((key) => collections[key])
 );
-export default CollectionPreviewSelector;
 
 // export const cateCollectionSelector = (collectionUrlParam) =>
 //   createSelector([shopCollectionSelector], (collections) =>
@@ -32,12 +31,10 @@ export default CollectionPreviewSelector;
 //       (collection) => collection.id === COLLECTION_ID_MAP[collectionUrlParam]
 //     )
 //   );
-export const cateCollectionSelector = memoize((collectionUrlParam) =>
-  createSelector(
-    [shopCollectionSelector],
-
-    (collections) => (collections ? collections[collectionUrlParam] : null)
+export const CollectionSelector = memoize((collectionUrlParam) =>
+  createSelector([shopCollectionSelector], (collections) =>
+    collections ? collections[collectionUrlParam] : null
   )
 );
 
-// use memoize from lodash utility library
+// use memoize from lodash utility library to wrap the cateCollectionSelector
