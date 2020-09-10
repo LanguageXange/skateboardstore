@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 // connect is a HOC
-import { Link } from "react-router-dom";
+
 import { ReactComponent as MyLogo } from "../../assets/skate.svg";
 // this is a special syntax in React for importing SVG!!
 
@@ -11,37 +11,40 @@ import { CurrentUserSelector } from "../../redux/user/user.selector";
 import { CartItemHiddenSelector } from "../../redux/cart/cart.selectors";
 import CartItem from "../cart-icon/cart-icon.component";
 import Cart from "../cart-dropdown/cart-dropdown.component";
-import "./header.styles.scss";
+//import "./header.styles.scss";
 import { auth } from "../../firebase/firebase.utils";
 
+// using styled-components
+import {
+  HeaderContainer,
+  LogoContainer,
+  OptionsContainer,
+  OptionLink,
+  OptionDiv,
+} from "./header.styles";
 // previously we get currentUser from App.js but now we are getting it from redux
 const Header = ({ currentUser, hidden }) => {
   return (
-    <div className="header">
-      <Link className="logo-container" to="/">
+    <HeaderContainer>
+      <LogoContainer to="/">
         <MyLogo className="logo" />
-      </Link>
-      <div className="options">
-        <Link className="option " to="/shop">
-          Shop
-        </Link>
-        <Link className="option " to="/contact">
-          Contact
-        </Link>
+      </LogoContainer>
+
+      <OptionsContainer>
+        <OptionLink to="/shop">Shop</OptionLink>
+        <OptionLink to="/contact">Contact</OptionLink>
 
         {currentUser ? (
-          <div className="option " onClick={() => auth.signOut()}>
+          <OptionLink as="div" onClick={() => auth.signOut()}>
             Sign Out
-          </div>
+          </OptionLink>
         ) : (
-          <Link className="option" to="/signin">
-            Sign In
-          </Link>
+          <OptionLink to="/signin">Sign In</OptionLink>
         )}
         <CartItem />
-      </div>
+      </OptionsContainer>
       {hidden ? null : <Cart />}
-    </div>
+    </HeaderContainer>
   );
 };
 // we want to hide the Cart drop down menu, implement redux in cart d

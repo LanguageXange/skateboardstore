@@ -55,9 +55,9 @@ const SHOP_DATA = {
       },
       {
         id: 7,
-        name: "Landyachtz Owl",
+        name: "Landyachtz White",
         imageUrl:
-          "https://landyachtz.com/ca/wp-content/uploads/sites/3/2020/08/WEB-Tomahawk-Owl-Cover.jpg",
+          "https://landyachtz.com/ca/wp-content/uploads/sites/3/2020/06/120CP-FRRIPHUM-Ripper_Humanoid_Complete-Longboard-Boards-Cover-Web.jpg",
         price: 140,
       },
       {

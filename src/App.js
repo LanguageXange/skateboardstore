@@ -9,10 +9,15 @@ import ShopPage from "./pages/shop/shop.component";
 import CheckoutPage from "./pages/checkout/checkout.component";
 import SignInAndSignUpPage from "./pages/sign-in-up/sign-in-up.component";
 import Header from "./components/header/header.component";
-import { auth, createUserProfile } from "./firebase/firebase.utils";
+import {
+  auth,
+  createUserProfile,
+  addCollectionAndDocument,
+} from "./firebase/firebase.utils";
 
 import { createStructuredSelector } from "reselect";
 import { CurrentUserSelector } from "./redux/user/user.selector";
+import { CollectionPreviewSelector } from "./redux/shop/shop.selectors";
 
 // add connect & dispatch in app.js so we can remove constructor super and this.state
 class App extends React.Component {
@@ -24,7 +29,7 @@ class App extends React.Component {
   // Lesson-10 Titled: Storing User Data in App - review , a bit complicated
   // TypeError - onSnapshot of undefined?? => solution delete collection sometimes work? delete users in authentication
   componentDidMount() {
-    const { setCurrentUser } = this.props;
+    const { setCurrentUser, collectionsArray } = this.props;
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
       if (userAuth) {
         const userRef = await createUserProfile(userAuth);
@@ -37,6 +42,14 @@ class App extends React.Component {
       } else {
         // if user signs out userAuth will be null
         setCurrentUser(userAuth);
+        // we only want to return title and items from the collectionsArray
+        // we are moving data from local machine to firebase
+        // only call it once and then delete the addCollectionAndDocument otherwise you will see a lot of items in collections
+
+        // addCollectionAndDocument(
+        //   "collections",
+        //   collectionsArray.map(({ title, items }) => ({ title, items }))
+        // );
       }
     });
   }
@@ -73,6 +86,7 @@ class App extends React.Component {
 
 const mapStateToProps = createStructuredSelector({
   currentUser: CurrentUserSelector,
+  collectionsArray: CollectionPreviewSelector,
 });
 
 const mapDispatchToProps = (dispatch) => ({

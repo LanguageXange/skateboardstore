@@ -46,8 +46,44 @@ export const createUserProfile = async (userAuth, additionalData) => {
   return userRef;
 };
 
+export const convertSnapShotToMap = (collectionSnapshot) => {
+  const transformCollection = collectionSnapshot.docs.map((doc) => {
+    const { title, items } = doc.data();
+    return {
+      routeName: encodeURI(title.toLowerCase()),
+      id: doc.id,
+      title,
+      items,
+    };
+  });
+
+  console.log(transformCollection, "transformcollection before reduce");
+  return transformCollection.reduce((acc, collection) => {
+    acc[collection.title.toLowerCase()] = collection;
+    return acc;
+  }, {});
+};
+
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
+
+export const addCollectionAndDocument = async (collectionKey, ItemsToAdd) => {
+  //const collectionRef = firestore.collection(collectionKey);
+  //console.log(collectionRef);
+
+  // firestore has 'batch' object
+  const batch = firestore.batch();
+
+  ItemsToAdd.forEach((item) => {
+    const newItemDoc = firestore.collection(collectionKey).doc();
+    batch.set(newItemDoc, item);
+  });
+
+  return await batch.commit();
+};
+//ItemsToAdd is actually an array of items defined in App.js
+// batch.commit() is a promise
+// addCollectionAndDocument function is here so that we don't need to manually enter data into firebase!!
 
 const provider = new firebase.auth.GoogleAuthProvider();
 provider.setCustomParameters({ prompt: "select_account" });

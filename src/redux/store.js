@@ -6,7 +6,12 @@ import logger from "redux-logger";
 
 import rootReducer from "./root-reducer";
 
-const middlewares = [logger];
+const middlewares = [];
+
+if (process.env.NODE_ENV === "development") {
+  middlewares.push(logger);
+}
+// only want logging in dev mode not in production mode
 
 const store = createStore(rootReducer, applyMiddleware(...middlewares));
 // spread the array of middlewares so that in the future just add more stuff into the middlewares array

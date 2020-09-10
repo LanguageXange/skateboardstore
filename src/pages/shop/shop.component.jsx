@@ -1,19 +1,47 @@
-import React from "react";
+import React, { Component } from "react";
 import { Route } from "react-router-dom";
 import CategoryPage from "../category/category.component";
 import CollectionOverview from "../../components/collections-overview/collections-overview.component";
+import { firestore, convertSnapShotToMap } from "../../firebase/firebase.utils";
+import { connect } from "react-redux";
+import { updateCollection } from "../../redux/shop/shop.actions";
 
-const ShopPage = ({ match }) => {
-  console.log(match.path, "in shop component THIS IS WORKING");
-  return (
-    <div className="shop-page">
-      <Route exact path={match.path} component={CollectionOverview} />
-      <Route path={`${match.path}/:categoryId`} component={CategoryPage} />
-    </div>
-  );
-};
+class ShopPage extends Component {
+  unsubscribeFromSnapshot = null;
 
-export default ShopPage;
+  componentDidMount() {
+    // destructure updatecollection from the mapDispatchToProps
+    const { updateCollection } = this.props;
+
+    const collectionRef = firestore.collection("collections");
+    this.unsubscribeFromSnapshot = collectionRef.onSnapshot(
+      async (snapshot) => {
+        console.log(snapshot, "snap ");
+        const collectionMap = convertSnapShotToMap(snapshot);
+        console.log(collectionMap, "collectionMap after reduce");
+        updateCollection(collectionMap);
+      }
+    );
+  }
+
+  componentWillUnmount() {}
+
+  render() {
+    const { match } = this.props;
+    return (
+      <div className="shop-page">
+        <Route exact path={match.path} component={CollectionOverview} />
+        <Route path={`${match.path}/:categoryId`} component={CategoryPage} />
+      </div>
+    );
+  }
+}
+
+const mapDispatchToProps = (dispatch) => ({
+  updateCollection: (collection) => dispatch(updateCollection(collection)),
+});
+
+export default connect(null, mapDispatchToProps)(ShopPage);
 
 // TODO: DEBUG- WHEN I TYPE /shop/skateboard in the console.log it doesn't show up!!??
 
@@ -25,3 +53,7 @@ export default ShopPage;
 // build a new category page
 // dynamically render the category page
 // e.g show the longboard but not other stuff
+// in App.js remember to remove 'exact' for  <Route path="/shop" component={ShopPage} />
+
+// Migrate data to firebase
+// turn this component from functional to class component
