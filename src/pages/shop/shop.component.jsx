@@ -22,20 +22,28 @@ class ShopPage extends Component {
 
   componentDidMount() {
     // destructure updatecollection from the mapDispatchToProps
+
+    // using promise pattern
+    // instead of doing onSnapshot, use get then
     const { updateCollection } = this.props;
     const collectionRef = firestore.collection("collections");
-    this.unsubscribeFromSnapshot = collectionRef.onSnapshot(
-      async (snapshot) => {
-        console.log(snapshot, "snap ");
-        const collectionMap = convertSnapShotToMap(snapshot);
-        console.log(collectionMap, "collectionMap after reduce");
-        updateCollection(collectionMap);
-        this.setState({ loading: false });
-      }
-    );
-  }
 
-  componentWillUnmount() {}
+    collectionRef.get().then((snapshot) => {
+      const collectionMap = convertSnapShotToMap(snapshot);
+      updateCollection(collectionMap);
+      this.setState({ loading: false });
+    });
+    // colletions initial state is null defined in shop.reducer.js
+    // this.unsubscribeFromSnapshot = collectionRef.onSnapshot(
+    //   async (snapshot) => {
+    //     console.log(snapshot, "snap ");
+    //     const collectionMap = convertSnapShotToMap(snapshot);
+    //     console.log(collectionMap, "collectionMap after reduce");
+    //     updateCollection(collectionMap);
+    //     this.setState({ loading: false });
+    //   }
+    // );
+  }
 
   render() {
     const { match } = this.props;
