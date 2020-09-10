@@ -5,14 +5,24 @@ import CollectionOverview from "../../components/collections-overview/collection
 import { firestore, convertSnapShotToMap } from "../../firebase/firebase.utils";
 import { connect } from "react-redux";
 import { updateCollection } from "../../redux/shop/shop.actions";
+import WithSpinner from "../../components/with-spinner/with-spinner.component";
+
+const CollectionOverviewSpinner = WithSpinner(CollectionOverview);
+const CategoryPageSpinner = WithSpinner(CategoryPage);
 
 class ShopPage extends Component {
+  // if we only need state , we don't have to write constructor super
+  // under the hood, if react sees the class component and state, it'll pull constructor for us
+  // short hand way
+  state = {
+    loading: true,
+  };
+
   unsubscribeFromSnapshot = null;
 
   componentDidMount() {
     // destructure updatecollection from the mapDispatchToProps
     const { updateCollection } = this.props;
-
     const collectionRef = firestore.collection("collections");
     this.unsubscribeFromSnapshot = collectionRef.onSnapshot(
       async (snapshot) => {
@@ -20,6 +30,7 @@ class ShopPage extends Component {
         const collectionMap = convertSnapShotToMap(snapshot);
         console.log(collectionMap, "collectionMap after reduce");
         updateCollection(collectionMap);
+        this.setState({ loading: false });
       }
     );
   }
@@ -28,10 +39,22 @@ class ShopPage extends Component {
 
   render() {
     const { match } = this.props;
+    const { loading } = this.state;
     return (
       <div className="shop-page">
-        <Route exact path={match.path} component={CollectionOverview} />
-        <Route path={`${match.path}/:categoryId`} component={CategoryPage} />
+        <Route
+          exact
+          path={match.path}
+          render={(props) => (
+            <CollectionOverviewSpinner isLoading={loading} {...props} />
+          )}
+        />
+        <Route
+          path={`${match.path}/:categoryId`}
+          render={(props) => (
+            <CategoryPageSpinner isLoading={loading} {...props} />
+          )}
+        />
       </div>
     );
   }
@@ -57,3 +80,7 @@ export default connect(null, mapDispatchToProps)(ShopPage);
 
 // Migrate data to firebase
 // turn this component from functional to class component
+
+//BEFORE SPINNER
+//<Route exact path={match.path} component={CollectionOverview} />
+//<Route path={`${match.path}/:categoryId`} component={CategoryPage} />

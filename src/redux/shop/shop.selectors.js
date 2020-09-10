@@ -22,7 +22,8 @@ export const shopCollectionSelector = createSelector(
 
 export const CollectionPreviewSelector = createSelector(
   [shopCollectionSelector],
-  (collections) => Object.keys(collections).map((key) => collections[key])
+  (collections) =>
+    collections ? Object.keys(collections).map((key) => collections[key]) : []
 );
 
 // export const cateCollectionSelector = (collectionUrlParam) =>
