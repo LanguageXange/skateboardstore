@@ -39,3 +39,16 @@ export const CollectionSelector = memoize((collectionUrlParam) =>
 );
 
 // use memoize from lodash utility library to wrap the cateCollectionSelector
+
+// related to redux thunk
+
+export const CollectionFetchingSelector = createSelector(
+  [shopSelector],
+  (shop) => shop.isFetching
+);
+
+export const CollectionLoadingSelector = createSelector(
+  [shopCollectionSelector],
+  (collection) => !!collection
+);
+// !! turn value into boolean
