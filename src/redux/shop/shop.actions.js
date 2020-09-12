@@ -1,12 +1,12 @@
 import ShopActionTypes from "./shop.types";
-import { firestore, convertSnapShotToMap } from "../../firebase/firebase.utils";
+//import { firestore, convertSnapShotToMap } from "../../firebase/firebase.utils";
 // action creator is simply a function that returns an object!
 // export const updateCollection = (collectionsMap) => ({
 //   type: ShopActionTypes.UPDATE_COLLECTIONS,
 //   payload: collectionsMap,
 // });
 
-export const fetchCollectionStart = () => ({
+export const fetchCollectionStartss = () => ({
   type: ShopActionTypes.FETCH_COLLECTIONS_START,
 });
 
@@ -20,16 +20,17 @@ export const fetchCollectionFail = (errMessage) => ({
 });
 
 // redux thunk: write a function that returns a function
-export const fetchCollectionStartAsync = () => {
-  return (dispatch) => {
-    const collectionRef = firestore.collection("collections");
-    dispatch(fetchCollectionStart());
-    collectionRef
-      .get()
-      .then((snapshot) => {
-        const collectionMap = convertSnapShotToMap(snapshot);
-        dispatch(fetchCollectionSuccess(collectionMap));
-      })
-      .catch((err) => dispatch(fetchCollectionFail(err.message)));
-  };
-};
+// introducing saga to replace redux thunk
+// export const fetchCollectionStartAsync = () => {
+//   return (dispatch) => {
+//     const collectionRef = firestore.collection("collections");
+//     dispatch(fetchCollectionStart());
+//     collectionRef
+//       .get()
+//       .then((snapshot) => {
+//         const collectionMap = convertSnapShotToMap(snapshot);
+//         dispatch(fetchCollectionSuccess(collectionMap));
+//       })
+//       .catch((err) => dispatch(fetchCollectionFail(err.message)));
+//   };
+// };
