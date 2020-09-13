@@ -6,8 +6,11 @@ import FormInput from "../form-input/form-input.component";
 // FormInput and CustomButton become a reusable component for signin sign up register...
 import CustomButton from "../custom-button/custom-button.component";
 // sign in with Google
-import { auth } from "../../firebase/firebase.utils";
-import { googleSignInStart } from "../../redux/user/user.action";
+
+import {
+  googleSignInStart,
+  emailSignInStart,
+} from "../../redux/user/user.action";
 class SignIn extends Component {
   constructor(props) {
     super(props);
@@ -20,15 +23,9 @@ class SignIn extends Component {
   // turn handleSubmit into async await
   handleSubmit = async (e) => {
     e.preventDefault();
-
+    const { emailSignInStart } = this.props;
     const { email, password } = this.state;
-    try {
-      await auth.signInWithEmailAndPassword(email, password);
-      // if sign in succeeds we will reset email / pass to empty string
-      this.setState({ email: "", password: "" });
-    } catch (err) {
-      console.log(err.message);
-    }
+    emailSignInStart(email, password);
   };
 
   // destructuring
@@ -76,6 +73,8 @@ class SignIn extends Component {
 
 const mapDispatchToProps = (dispatch) => ({
   googleSignInStart: () => dispatch(googleSignInStart()),
+  emailSignInStart: (email, password) =>
+    dispatch(emailSignInStart({ email, password })),
 });
 
 export default connect(null, mapDispatchToProps)(SignIn);
