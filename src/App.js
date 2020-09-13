@@ -23,36 +23,25 @@ import { CollectionPreviewSelector } from "./redux/shop/shop.selectors";
 // add connect & dispatch in app.js so we can remove constructor super and this.state
 class App extends React.Component {
   unsubscribeFromAuth = null;
-  // we don't want to remount the component
-  // we just want the app to know that authentication state changes
-  // onAuthStateChanged is a firebase method
-  // userAuth is null when users sign out : setting by Firebase i guess
-  // Lesson-10 Titled: Storing User Data in App - review , a bit complicated
-  // TypeError - onSnapshot of undefined?? => solution delete collection sometimes work? delete users in authentication
-  componentDidMount() {
-    const { setCurrentUser, collectionsArray } = this.props;
-    this.unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
-      if (userAuth) {
-        const userRef = await createUserProfile(userAuth);
-        userRef.onSnapshot((snapShot) => {
-          setCurrentUser({
-            id: snapShot.id,
-            ...snapShot.data(),
-          });
-        });
-      } else {
-        // if user signs out userAuth will be null
-        setCurrentUser(userAuth);
-        // we only want to return title and items from the collectionsArray
-        // we are moving data from local machine to firebase
-        // only call it once and then delete the addCollectionAndDocument otherwise you will see a lot of items in collections
 
-        // addCollectionAndDocument(
-        //   "collections",
-        //   collectionsArray.map(({ title, items }) => ({ title, items }))
-        // );
-      }
-    });
+  componentDidMount() {
+    const { setCurrentUser } = this.props;
+
+    // ADD SAGA
+
+    // this.unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
+    //   if (userAuth) {
+    //     const userRef = await createUserProfile(userAuth);
+    //     userRef.onSnapshot((snapShot) => {
+    //       setCurrentUser({
+    //         id: snapShot.id,
+    //         ...snapShot.data(),
+    //       });
+    //     });
+    //   } else {
+    //     // if user signs out userAuth will be null
+    //     setCurrentUser(userAuth);
+    // });
   }
 
   componentWillUnmount() {

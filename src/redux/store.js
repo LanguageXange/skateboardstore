@@ -1,12 +1,13 @@
 import { createStore, applyMiddleware } from "redux";
 import { persistStore } from "redux-persist";
+import rootSaga from "../redux/root-saga";
 
 import logger from "redux-logger";
 // logger is a middleware for debugging
 
 import createSagaMiddleware from "redux-saga";
 // replace thunk with saga to handle async events
-import { fetchCollectionStart } from "./shop/shop.saga";
+
 import rootReducer from "./root-reducer";
 
 const sagaMiddleware = createSagaMiddleware();
@@ -21,7 +22,7 @@ if (process.env.NODE_ENV === "development") {
 const store = createStore(rootReducer, applyMiddleware(...middlewares));
 // spread the array of middlewares so that in the future just add more stuff into the middlewares array
 
-sagaMiddleware.run(fetchCollectionStart);
+sagaMiddleware.run(rootSaga);
 
 const persistor = persistStore(store);
 

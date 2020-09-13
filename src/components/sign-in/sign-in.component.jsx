@@ -1,13 +1,13 @@
 import React, { Component } from "react";
-
+import { connect } from "react-redux";
 import "./sign-in.styles.scss";
 
 import FormInput from "../form-input/form-input.component";
 // FormInput and CustomButton become a reusable component for signin sign up register...
 import CustomButton from "../custom-button/custom-button.component";
 // sign in with Google
-import { auth, signInWithGoogle } from "../../firebase/firebase.utils";
-
+import { auth } from "../../firebase/firebase.utils";
+import { googleSignInStart } from "../../redux/user/user.action";
 class SignIn extends Component {
   constructor(props) {
     super(props);
@@ -39,6 +39,7 @@ class SignIn extends Component {
   };
 
   render() {
+    const { googleSignInStart } = this.props;
     return (
       <div className="sign-in">
         <h2 className="title">I already have an account</h2>
@@ -63,7 +64,7 @@ class SignIn extends Component {
           />
 
           <CustomButton type="submit"> Sign In </CustomButton>
-          <CustomButton onClick={signInWithGoogle} isGoogle>
+          <CustomButton type="button" onClick={googleSignInStart} isGoogle>
             Sign In with Google
           </CustomButton>
         </form>
@@ -72,4 +73,9 @@ class SignIn extends Component {
   }
 }
 // if you don't pass in a value for isGoogle, it will set as true
-export default SignIn;
+
+const mapDispatchToProps = (dispatch) => ({
+  googleSignInStart: () => dispatch(googleSignInStart()),
+});
+
+export default connect(null, mapDispatchToProps)(SignIn);

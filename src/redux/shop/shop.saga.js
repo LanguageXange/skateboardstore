@@ -1,7 +1,8 @@
-import { takeEvery, call, put } from "redux-saga/effects";
+import { takeLatest, call, put } from "redux-saga/effects";
 import ShopActionTypes from "./shop.types.js";
 // takeEvery creates non-blocking calls
 // saga use the keyword 'put' to dispatch action
+// use takeLatest because we only want to fire the api call once
 
 import { firestore, convertSnapShotToMap } from "../../firebase/firebase.utils";
 import { fetchCollectionSuccess, fetchCollectionFail } from "./shop.actions";
@@ -20,7 +21,7 @@ export function* fetchCollectionAsync() {
 }
 
 export function* fetchCollectionStart() {
-  yield takeEvery(
+  yield takeLatest(
     ShopActionTypes.FETCH_COLLECTIONS_START,
     fetchCollectionAsync
   );

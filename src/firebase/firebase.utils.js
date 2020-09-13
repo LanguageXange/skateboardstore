@@ -85,8 +85,10 @@ export const addCollectionAndDocument = async (collectionKey, ItemsToAdd) => {
 // batch.commit() is a promise
 // addCollectionAndDocument function is here so that we don't need to manually enter data into firebase!!
 
-const provider = new firebase.auth.GoogleAuthProvider();
-provider.setCustomParameters({ prompt: "select_account" });
-export const signInWithGoogle = () => auth.signInWithPopup(provider);
+export const googleProvider = new firebase.auth.GoogleAuthProvider();
+googleProvider.setCustomParameters({ prompt: "select_account" });
+export const signInWithGoogle = () => auth.signInWithPopup(googleProvider);
+
+// MOVE SIGN IN TO SAGAS!!!
 
 export default firebase;
