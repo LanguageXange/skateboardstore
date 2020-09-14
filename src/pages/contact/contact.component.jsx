@@ -14,15 +14,18 @@ const ContactPage = (props) => {
             😎
           </span>{" "}
         </h2>
-        <video
-          width="785"
-          height="449"
-          muted
-          autoPlay
-          loop
-          src={Video}
-          type="video/mp4"
-        />
+
+        <div className="pattern">
+          <video
+            width="885"
+            height="505"
+            muted
+            autoPlay
+            loop
+            src={Video}
+            type="video/mp4"
+          />
+        </div>
       </ContactContainer>
     </>
   );

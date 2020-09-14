@@ -22,3 +22,7 @@ export const RemoveItem = (item) => ({
   payload: item,
 });
 // RemoveItem only decrease quantity by one
+
+export const clearCart = () => ({
+  type: CartActionTypes.CLEAR_CART,
+});

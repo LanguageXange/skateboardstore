@@ -12,7 +12,7 @@ import { CartItemHiddenSelector } from "../../redux/cart/cart.selectors";
 import CartItem from "../cart-icon/cart-icon.component";
 import Cart from "../cart-dropdown/cart-dropdown.component";
 //import "./header.styles.scss";
-import { auth } from "../../firebase/firebase.utils";
+
 import { signOutStart } from "../../redux/user/user.action";
 
 // using styled-components

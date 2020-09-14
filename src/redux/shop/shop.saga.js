@@ -1,4 +1,4 @@
-import { takeLatest, call, put } from "redux-saga/effects";
+import { takeLatest, call, put, all } from "redux-saga/effects";
 import ShopActionTypes from "./shop.types.js";
 // takeEvery creates non-blocking calls
 // saga use the keyword 'put' to dispatch action
@@ -25,4 +25,8 @@ export function* fetchCollectionStart() {
     ShopActionTypes.FETCH_COLLECTIONS_START,
     fetchCollectionAsync
   );
+}
+
+export function* shopSagas() {
+  yield all([call(fetchCollectionStart)]);
 }
