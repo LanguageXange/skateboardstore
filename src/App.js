@@ -2,7 +2,7 @@ import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import "./App.css";
-import { setCurrentUser } from "./redux/user/user.action";
+
 // adding action creator function , which simply returns the action object
 import Homepage from "./pages/homepage/homepage.component";
 import ShopPage from "./pages/shop/shop.component";
@@ -10,38 +10,17 @@ import CheckoutPage from "./pages/checkout/checkout.component";
 import ContactPage from "./pages/contact/contact.component";
 import SignInAndSignUpPage from "./pages/sign-in-up/sign-in-up.component";
 import Header from "./components/header/header.component";
-import {
-  auth,
-  createUserProfile,
-  addCollectionAndDocument,
-} from "./firebase/firebase.utils";
 
 import { createStructuredSelector } from "reselect";
 import { CurrentUserSelector } from "./redux/user/user.selector";
-import { CollectionPreviewSelector } from "./redux/shop/shop.selectors";
-
+import { checkUserSession } from "./redux/user/user.action";
 // add connect & dispatch in app.js so we can remove constructor super and this.state
 class App extends React.Component {
   unsubscribeFromAuth = null;
 
   componentDidMount() {
-    const { setCurrentUser } = this.props;
-
-    // ADD SAGA
-
-    // this.unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
-    //   if (userAuth) {
-    //     const userRef = await createUserProfile(userAuth);
-    //     userRef.onSnapshot((snapShot) => {
-    //       setCurrentUser({
-    //         id: snapShot.id,
-    //         ...snapShot.data(),
-    //       });
-    //     });
-    //   } else {
-    //     // if user signs out userAuth will be null
-    //     setCurrentUser(userAuth);
-    // });
+    const { checkUserSession } = this.props;
+    checkUserSession();
   }
 
   componentWillUnmount() {
@@ -77,13 +56,11 @@ class App extends React.Component {
 
 const mapStateToProps = createStructuredSelector({
   currentUser: CurrentUserSelector,
-  collectionsArray: CollectionPreviewSelector,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  setCurrentUser: (user) => dispatch(setCurrentUser(user)),
+  checkUserSession: () => dispatch(checkUserSession()),
 });
-
 export default connect(mapStateToProps, mapDispatchToProps)(App);
 // only the HomePage, ShopPage component has access to that specific Route props
 // place the Header Component outside of the Switch! so it will appear across the pages!

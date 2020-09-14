@@ -92,3 +92,14 @@ export const signInWithGoogle = () => auth.signInWithPopup(googleProvider);
 // MOVE SIGN IN TO SAGAS!!!
 
 export default firebase;
+
+// util function for isUserAuthenticate in user.sagas.js
+
+export const getCurrentUser = () => {
+  return new Promise((resolve, reject) => {
+    const unsubscribe = auth.onAuthStateChanged((userAuth) => {
+      unsubscribe();
+      resolve(userAuth);
+    }, reject);
+  });
+};
