@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import "./App.css";
@@ -15,44 +15,31 @@ import { createStructuredSelector } from "reselect";
 import { CurrentUserSelector } from "./redux/user/user.selector";
 import { checkUserSession } from "./redux/user/user.action";
 // add connect & dispatch in app.js so we can remove constructor super and this.state
-class App extends React.Component {
-  unsubscribeFromAuth = null;
-
-  componentDidMount() {
-    const { checkUserSession } = this.props;
+const App = ({ checkUserSession, currentUser }) => {
+  useEffect(() => {
     checkUserSession();
-  }
+  }, [checkUserSession]);
 
-  componentWillUnmount() {
-    this.unsubscribeFromAuth();
-  }
+  return (
+    <>
+      <Header />
+      <Switch>
+        <Route exact path="/" component={Homepage} />
+        <Route path="/shop" component={ShopPage} />
+        <Route exact path="/contact" component={ContactPage} />
+        <Route exact path="/checkout" component={CheckoutPage} />
 
-  render() {
-    return (
-      <>
-        <Header />
-        <Switch>
-          <Route exact path="/" component={Homepage} />
-          <Route path="/shop" component={ShopPage} />
-          <Route exact path="/contact" component={ContactPage} />
-          <Route exact path="/checkout" component={CheckoutPage} />
-
-          <Route
-            exact
-            path="/signin"
-            render={() =>
-              this.props.currentUser ? (
-                <Redirect to="/" />
-              ) : (
-                <SignInAndSignUpPage />
-              )
-            }
-          />
-        </Switch>
-      </>
-    );
-  }
-}
+        <Route
+          exact
+          path="/signin"
+          render={() =>
+            currentUser ? <Redirect to="/" /> : <SignInAndSignUpPage />
+          }
+        />
+      </Switch>
+    </>
+  );
+};
 
 const mapStateToProps = createStructuredSelector({
   currentUser: CurrentUserSelector,
